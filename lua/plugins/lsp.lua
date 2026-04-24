@@ -129,8 +129,8 @@ return {
                     "--clang-tidy",
                     "--header-insertion=iwyu",
                     "--completion-style=detailed",
-                    "--function-arg-placeholders",
-                    "--fallback-style=llvm",
+                    "--function-arg-placeholders=false",
+                    "--fallback-style=none",
                 },
                 init_options = {
                     usePlaceholders = true,

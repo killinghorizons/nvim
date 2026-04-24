@@ -1,17 +1,17 @@
--- function ColorMyPencils(color)
--- color = color or "solarized-osaka"
--- vim.cmd.colorscheme(color)
--- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
--- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
--- vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = 'none' })
--- vim.api.nvim_set_hl(0, 'TelescopeBorder', { bg = 'none' })
--- vim.api.nvim_set_hl(0, 'TelescopePromptTitle', { bg = 'none' })
--- vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { bg = 'none' })
--- vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', { bg = 'none' })
--- vim.api.nvim_set_hl(0, 'TelescopeResultsTitle', { bg = 'none' })
--- vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "NONE" })
--- vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "NONE" })
--- end
+function ColorMyPencils(color)
+    color = color or "rose-pine"
+    vim.cmd.colorscheme(color)
+	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    -- vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = 'none' })
+    -- vim.api.nvim_set_hl(0, 'TelescopeBorder', { bg = 'none' })
+    -- vim.api.nvim_set_hl(0, 'TelescopePromptTitle', { bg = 'none' })
+    -- vim.api.nvim_set_hl(0, 'TelescopePromptBorder', { bg = 'none' })
+    -- vim.api.nvim_set_hl(0, 'TelescopePreviewTitle', { bg = 'none' })
+    -- vim.api.nvim_set_hl(0, 'TelescopeResultsTitle', { bg = 'none' })
+    -- vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "NONE" })
+    -- vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = "NONE" })
+end
 
 return {
     {
@@ -22,7 +22,7 @@ return {
         config = function()
             vim.g.everforest_enable_italic = true
             vim.g.everforest_background = "hard"
-            vim.g.everforest_transparent_background = false
+            vim.g.everforest_transparent_background = true
             vim.o.background = "dark"
             vim.cmd.colorscheme "everforest"
         end,
@@ -41,28 +41,20 @@ return {
     --         }
     --     end,
     -- },
-    -- {
-    --     "rose-pine/neovim",
-    --     name = "rose-pine",
-    --     config = function()
-    --         require('rose-pine').setup({
-    --             enable = {
-    --                 terminal = true,
-    --                 legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
-    --                 migrations = true,        -- Handle deprecated options automatically
-    --             },
-    --             dim_inactive_windows = false,
-    --             extend_background_behind_borders = true,
-    --             disable_background = true,
-    --             styles = {
-    --                 bold = true,
-    --                 italic = false,
-    --                 transparency = true,
-    --             },
-    --         })
-    --         ColorMyPencils();
-    --     end
-    -- },
+    {
+        "rose-pine/neovim",
+        name = "rose-pine",
+        config = function()
+            require('rose-pine').setup({
+                disable_background = true,
+                styles = {
+                    italic = true,
+                },
+            })
+
+            -- ColorMyPencils();
+        end
+    },
     -- {
     --     "navarasu/onedark.nvim",
     --     priority = 1000,
@@ -128,7 +120,7 @@ return {
     --             palette_overrides = {},
     --             overrides = {},
     --             dim_inactive = false,
-    --             transparent_mode = false,
+    --             transparent_mode = true,
     --         }
     --         vim.o.background = "dark" -- or "light" for light mode
     --         vim.cmd [[colorscheme gruvbox]]
