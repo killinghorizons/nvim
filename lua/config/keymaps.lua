@@ -59,3 +59,7 @@ vim.keymap.set("n", "<A-left>", "0", { desc = "Go start of line" })
 vim.keymap.set("n", "<A-right>", "$", { desc = "Go end of line" })
 vim.keymap.set("n", "<A-up>", "5k", { desc = "Move 5 lines up" })
 vim.keymap.set("n", "<A-down>", "5j", { desc = "Move 5 lines down" })
+
+vim.keymap.set("n", "<leader><leader>", function()
+    vim.cmd("so")
+end)

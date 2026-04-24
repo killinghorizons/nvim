@@ -10,6 +10,7 @@ vim.o.sw = 4
 vim.o.ts = 4
 vim.o.softtabstop = 4
 vim.o.et = true
+vim.o.si = true
 
 -- Highlight current line
 vim.o.cursorline = false
@@ -31,6 +32,8 @@ vim.o.winborder = "rounded"
 vim.o.clipboard = "unnamedplus"
 
 -- Save undo history.
+vim.o.swapfile = false
+vim.o.backup = false
 vim.o.undofile = true
 
 -- Enable project-local configuration.
@@ -50,7 +53,8 @@ vim.o.ttimeoutlen = 10
 
 -- Status line.
 vim.o.laststatus = 3
-vim.o.cmdheight = 1
+vim.o.cmdheight = 0
+-- vim.o.cmdheight = 1
 
 -- Folding.
 vim.o.foldcolumn = "1"
@@ -58,3 +62,4 @@ vim.o.foldlevelstart = 99
 vim.wo.foldtext = ""
 
 vim.o.laststatus = 300
+
