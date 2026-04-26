@@ -9,64 +9,23 @@ return {
     version = "1.*",
     opts = {
         signature = { enabled = true },
-        term = {},
-        cmdline = {},
         completion = {
-            signature = {
-                enable = true,
-                window = {
-                    border = "rounded",
-                    winblend = 15,
-                },
+            list = {
+                selection = { preselect = false, auto_insert = true },
             },
-            ghost_text = {
-                enabled = true,
-                show_with_menu = false,
-                window = {
-                    border = "rounded",
-                    windlend = 15,
-                },
-            },
-            -- (Default) Only show the documentation popup when manually triggered
-            documentation = {
-                auto_show = true,
-                auto_show_delay_ms = 300,
-            },
-            menu = {
-                auto_show = true,
-                draw = {
-                    border = "rounded",
-                    winblend = 15,
-                    -- use tree sitter to label
-                    treesitter = { "lsp" },
-                    columns = {
-                        { "kind_icon" },
-                        { "label" },
-                        { "source_name" },
-                    },
-                    components = {
-                        kind_icon = {
-                            ellipsis = false,
-                            text = function(ctx)
-                                local icon = ctx.kind_icon
-                                if vim.tbl_contains({ "Path" }, ctx.source_name) then
-                                    local dev_icon, _ = require("nvim-web-devicons").get_icon(ctx.label)
-                                    if dev_icon then
-                                        icon = dev_icon
-                                    end
-                                else
-                                    icon = require("lspkind").symbolic(ctx.kind, {
-                                        mode = "symbol",
-                                    })
-                                end
-
-                                return icon .. ctx.icon_gap
-                            end,
-                        },
-                    },
+        },
+        documentation = { auto_show = true },
+        menu = {
+            scrollbar = false,
+            draw = {
+                gap = 2,
+                columns = {
+                    { "kind_icon", "kind", gap = 1 },
+                    { "label", "label_description", gap = 1 },
                 },
             },
         },
+        cmdline = { enabled = false },
         keymap = {
             preset = "super-tab",
             ["<C-p>"] = { "select_prev", "fallback_to_mappings" },
@@ -77,24 +36,10 @@ return {
         },
         appearance = {
             nerd_font_variant = "mono",
+            kind_icons = require("icons").symbol_kinds,
         },
         sources = {
-            providers = {
-                markdown = {
-                    name = "markdown",
-                    module = "render-markdown.integ.blink",
-                    enabled = true,
-                    fallbacks = { "lsp" },
-                },
-                lazydev = {
-                    name = "LazyDev",
-                    module = "lazydev.integrations.blink",
-                    -- make lazydev completions top priority (see `:h blink.cmp`)
-                    score_offset = 100,
-                },
-                buffer = { max_items = 5 },
-            },
-            default = { "lsp", "path", "snippets", "buffer", "cmdline", "lazydev" },
+            default = { "lsp", "path", "snippets", "buffer" },
         },
         fuzzy = { implementation = "prefer_rust_with_warning" },
     },

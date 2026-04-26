@@ -10,7 +10,8 @@ return {
         lazy = false, -- neo-tree will lazily load itself
         config = function()
             vim.keymap.set("n", "<C-b>", ":Neotree filesystem toggle left<CR>", {})
-            vim.keymap.set("n", "<leader>bf", ":Neotree buffers toggle float<CR>", {})
+            -- vim.keymap.set("n", "<leader>bf", ":Neotree buffers toggle float<CR>", {})
+            vim.keymap.set("n", "<leader>bf", ":Neotree filesystem toggle float<CR>", {})
         end,
     },
 }
