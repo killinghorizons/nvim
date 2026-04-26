@@ -39,8 +39,8 @@ vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
 vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 
 -- Split window
-vim.keymap.set("n", "ss", ":split<Return>", opts)
-vim.keymap.set("n", "sv", ":vsplit<Return>", opts)
+vim.keymap.set("n", "ss", ":split<Return>")
+vim.keymap.set("n", "sv", ":vsplit<Return>")
 
 -- Move window
 vim.keymap.set("n", "sh", "<C-w>h")
@@ -55,3 +55,11 @@ vim.keymap.set("n", "<A-left>", "0", { desc = "Go start of line" })
 vim.keymap.set("n", "<A-right>", "$", { desc = "Go end of line" })
 vim.keymap.set("n", "<A-up>", "5k", { desc = "Move 5 lines up" })
 vim.keymap.set("n", "<A-down>", "5j", { desc = "Move 5 lines down" })
+
+vim.keymap.set("x", "<leader>p", [["_dP]])
+
+-- LOL
+vim.keymap.set("n", "<Up>", "<c-w>k")
+vim.keymap.set("n", "<Down>", "<c-w>j")
+vim.keymap.set("n", "<Left>", "<c-w>h")
+vim.keymap.set("n", "<Right>", "<c-w>l")

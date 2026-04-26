@@ -53,7 +53,7 @@ vim.o.ttimeoutlen = 10
 
 -- Status line.
 vim.o.laststatus = 3
-vim.o.cmdheight = 0
+vim.o.cmdheight = 1
 -- vim.o.cmdheight = 1
 
 -- Folding.

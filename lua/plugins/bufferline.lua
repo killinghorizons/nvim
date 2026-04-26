@@ -20,6 +20,7 @@ return {
                 show_close_icon = false,
                 truncate_names = false,
                 indicator = { style = "underline" },
+                separator_style = "slope",
                 offsets = {
                     {
                         filetype = "neo-tree",
