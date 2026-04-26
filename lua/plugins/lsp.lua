@@ -1,3 +1,22 @@
+local signs = { Error = "󰅚 ", Warn = "󱄊 ", Hint = "󰌵 ", Info = "󰋽 " }
+
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+vim.diagnostic.config {
+    virtual_text = true, -- Show errors at the end of the line
+    signs = true, -- Keep the gutter icons on
+    update_in_insert = false,
+    underline = true,
+    severity_sort = true,
+    float = {
+        border = "rounded",
+        source = "always",
+    },
+}
+
 local on_attach = function(client, bufnr)
     client.server_capabilities.semanticTokensProvider = nil
     local buf_opts = { noremap = true, silent = true, buffer = bufnr }
@@ -39,7 +58,7 @@ return {
                 "lua_ls",
                 "clangd",
                 "rust_analyzer",
-                "stylua"
+                "stylua",
             },
             -- Automatically call vim.lsp.enable() for installed servers.
             -- Servers managed by wrapper plugins are excluded.
