@@ -1,7 +1,3 @@
-local opts = { noremap = true, silent = true }
-
-vim.g.mapleader = " "
-
 -- Cycle through buffers with Tab and Shift-Tab
 vim.keymap.set("n", "<Tab>", "<cmd>bn<cr>", { desc = "Next Buffer" })
 vim.keymap.set("n", "<S-Tab>", "<cmd>bp<cr>", { desc = "Prev Buffer" })
@@ -59,7 +55,3 @@ vim.keymap.set("n", "<A-left>", "0", { desc = "Go start of line" })
 vim.keymap.set("n", "<A-right>", "$", { desc = "Go end of line" })
 vim.keymap.set("n", "<A-up>", "5k", { desc = "Move 5 lines up" })
 vim.keymap.set("n", "<A-down>", "5j", { desc = "Move 5 lines down" })
-
-vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
-end)

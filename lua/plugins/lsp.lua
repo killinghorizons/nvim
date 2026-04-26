@@ -39,6 +39,7 @@ return {
                 "lua_ls",
                 "clangd",
                 "rust_analyzer",
+                "stylua"
             },
             -- Automatically call vim.lsp.enable() for installed servers.
             -- Servers managed by wrapper plugins are excluded.

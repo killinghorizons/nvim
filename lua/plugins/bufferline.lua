@@ -12,11 +12,14 @@ return {
         },
         opts = {
             options = {
+                close_command = function(bufnr)
+                    require("mini.bufremove").delete(bufnr, false)
+                end,
                 mode = "buffers", -- use "tabs" for actual vim tabs
-                separator_style = "thin", -- options: "slant" | "slope" | "thick" | "thin"
-                show_buffer_close_icons = true,
-                show_close_icon = true,
-                always_show_bufferline = true,
+                show_buffer_close_icons = false,
+                show_close_icon = false,
+                truncate_names = false,
+                indicator = { style = "underline" },
                 offsets = {
                     {
                         filetype = "neo-tree",

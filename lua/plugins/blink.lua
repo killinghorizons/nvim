@@ -12,9 +12,20 @@ return {
         term = {},
         cmdline = {},
         completion = {
+            signature = {
+                enable = true,
+                window = {
+                    border = "rounded",
+                    winblend = 15,
+                },
+            },
             ghost_text = {
                 enabled = true,
                 show_with_menu = false,
+                window = {
+                    border = "rounded",
+                    windlend = 15,
+                },
             },
             -- (Default) Only show the documentation popup when manually triggered
             documentation = {
@@ -24,6 +35,8 @@ return {
             menu = {
                 auto_show = true,
                 draw = {
+                    border = "rounded",
+                    winblend = 15,
                     -- use tree sitter to label
                     treesitter = { "lsp" },
                     columns = {

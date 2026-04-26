@@ -3,8 +3,6 @@ vim.o.termguicolors = true
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrw = 1
 
--- Make space leader key
-vim.g.mapleader = " "
 -- Use an indentation of 4 spaces.
 vim.o.sw = 4
 vim.o.ts = 4
@@ -47,8 +45,10 @@ vim.o.smartcase = true
 vim.wo.signcolumn = "yes"
 
 -- Update times and timeouts.
+vim.o.timeout = true
+vim.opt.timeoutlen = 1000
 vim.o.updatetime = 250
-vim.o.timeoutlen = 300
+-- vim.o.timeoutlen = 300
 vim.o.ttimeoutlen = 10
 
 -- Status line.
@@ -62,4 +62,3 @@ vim.o.foldlevelstart = 99
 vim.wo.foldtext = ""
 
 vim.o.laststatus = 300
-
