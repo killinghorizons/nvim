@@ -19,24 +19,6 @@ return {
                     multiline_threshold = 1, -- Maximum number of lines to show for a single context
                     trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded.
                 },
-                keys = {
-                    {
-                        "[c",
-                        function()
-                            -- Jump to previous change when in diffview.
-                            if vim.wo.diff then
-                                return "[c"
-                            else
-                                vim.schedule(function()
-                                    require("treesitter-context").go_to_context()
-                                end)
-                                return "<Ignore>"
-                            end
-                        end,
-                        desc = "Jump to upper context",
-                        expr = true,
-                    },
-                },
             },
         },
         build = ":TSUpdate",

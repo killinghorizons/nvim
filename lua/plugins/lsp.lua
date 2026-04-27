@@ -1,20 +1,20 @@
-local signs = { Error = "󰅚 ", Warn = "󱄊 ", Hint = "󰌵 ", Info = "󰋽 " }
-
+-- diagnostic signs
+local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
+-- inline diagnostics (virtual text)
 vim.diagnostic.config {
-    virtual_text = true, -- Show errors at the end of the line
-    signs = true, -- Keep the gutter icons on
-    update_in_insert = false,
-    underline = true,
-    severity_sort = true,
-    float = {
-        border = "rounded",
-        source = "always",
+    virtual_text = {
+        prefix = "●",
+        spacing = 2,
     },
+    signs = true,
+    underline = true,
+    update_in_insert = false,
+    severity_sort = true,
 }
 
 local on_attach = function(client, bufnr)
@@ -161,6 +161,9 @@ return {
                     usePlaceholders = true,
                     completeUnimported = true,
                     clangdFileStatus = true,
+                    fallbackFlags = {
+                        "-std=c++20",
+                    },
                 },
                 -- Important for Windows/Clangd compatibility:
                 capabilities = {
@@ -170,10 +173,5 @@ return {
                 root_markers = { ".clangd" },
             })
         end,
-    },
-    {
-        "folke/lazydev.nvim",
-        ft = "lua",
-        opts = {},
     },
 }
