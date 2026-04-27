@@ -105,10 +105,10 @@ return {
 
             -- python
             vim.lsp.config("basedpyright", {
-                install = {
-                    enabled = false,
-                },
-                cmd = { "basedpyright-langserver", "--stdio" },
+                -- install = {
+                --     enabled = false,
+                -- },
+                -- cmd = { "basedpyright-langserver", "--stdio" },
                 filetypes = { "python" },
                 root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", ".git" },
                 settings = {
@@ -124,6 +124,11 @@ return {
                         },
                     },
                 },
+            })
+
+            -- Shells
+            vim.lsp.config("bash-language-server", {
+                filetypes = { "bash", "sh", "zsh" },
             })
 
             -- lua
