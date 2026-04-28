@@ -5,7 +5,7 @@ return {
         event = "BufWritePre",
         keys = {
             {
-                "<leader>f",
+                "<leader>F",
                 function()
                     require("conform").format { async = true, lsp_fallback = true }
                 end,
@@ -27,6 +27,7 @@ return {
                 lua = { "stylua" },
                 markdown = { "prettier", name = "dprint", timeout_ms = 500, lsp_format = "fallback" },
                 rust = { name = "rust_analyzer", timeout_ms = 500, lsp_format = "prefer" },
+                css = { "prettier" },
                 scss = { "prettier" },
                 sh = { "shfmt" },
                 typescript = { "prettier", name = "dprint", timeout_ms = 500, lsp_format = "fallback" },

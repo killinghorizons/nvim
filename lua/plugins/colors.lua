@@ -94,4 +94,18 @@ return {
     --         vim.cmd [[colorscheme gruvbox]]
     --     end,
     -- },
+    -- {
+    --     "metalelf0/black-metal-theme-neovim",
+    --     lazy = false,
+    --     priority = 1000,
+    --     config = function()
+    --         require("black-metal").setup {
+    --             -- optional configuration
+    --             --
+    --             -- Can be one of: bathory | burzum | dark-funeral | darkthrone | emperor | gorgoroth | immortal | impaled-nazarene | khold | marduk | mayhem | nile | taake | thyrfing | venom | windir
+    --             theme = "mayhem",
+    --         }
+    --         require("black-metal").load()
+    --     end,
+    -- },
 }
