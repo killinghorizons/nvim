@@ -12,6 +12,7 @@ return {
         completion = {
             list = {
                 selection = { preselect = false, auto_insert = true },
+                max_items = 10,
             },
         },
         documentation = { auto_show = true },
@@ -35,7 +36,6 @@ return {
             ["<Return>"] = { "select_and_accept", "fallback_to_mappings" },
         },
         appearance = {
-            nerd_font_variant = "mono",
             kind_icons = require("icons").symbol_kinds,
         },
         sources = {

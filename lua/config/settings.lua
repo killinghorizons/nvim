@@ -46,19 +46,12 @@ vim.wo.signcolumn = "yes"
 
 -- Update times and timeouts.
 vim.o.timeout = true
-vim.opt.timeoutlen = 1000
-vim.o.updatetime = 250
--- vim.o.timeoutlen = 300
+vim.o.updatetime = 300
+vim.opt.timeoutlen = 500
 vim.o.ttimeoutlen = 10
 
 -- Status line.
 vim.o.laststatus = 3
 vim.o.cmdheight = 1
--- vim.o.cmdheight = 1
-
--- Folding.
--- vim.o.foldcolumn = "1"
--- vim.o.foldlevelstart = 99
--- vim.wo.foldtext = ""
 
 vim.o.laststatus = 300

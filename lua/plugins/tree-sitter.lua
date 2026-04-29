@@ -8,7 +8,7 @@ return {
                 "nvim-treesitter/nvim-treesitter-context",
                 opts = {
                     -- Avoid the sticky context from growing a lot.
-                    -- max_lines = 3,
+                    max_lines = 0,
                     -- Match the context lines to the source code.
                     -- multiline_threshold = 1,
                     -- Disable it when the window is too small.
