@@ -18,13 +18,6 @@ return {
         documentation = { auto_show = true },
         menu = {
             scrollbar = false,
-            draw = {
-                gap = 2,
-                columns = {
-                    { "kind_icon", "kind", gap = 1 },
-                    { "label", "label_description", gap = 1 },
-                },
-            },
         },
         cmdline = { enabled = false },
         keymap = {
@@ -34,9 +27,6 @@ return {
             ["<Tab>"] = { "select_next", "fallback_to_mappings" },
             ["<S-Tab>"] = { "select_prev", "fallback_to_mappings" },
             ["<Return>"] = { "select_and_accept", "fallback_to_mappings" },
-        },
-        appearance = {
-            kind_icons = require("icons").symbol_kinds,
         },
         sources = {
             default = { "lsp", "path", "snippets", "buffer" },

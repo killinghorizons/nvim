@@ -7,14 +7,8 @@ return {
             {
                 "nvim-treesitter/nvim-treesitter-context",
                 opts = {
-                    -- Avoid the sticky context from growing a lot.
-                    max_lines = 0,
-                    -- Match the context lines to the source code.
-                    -- multiline_threshold = 1,
-                    -- Disable it when the window is too small.
-                    -- min_window_height = 20,
-                    -- max_lines = 3, -- How many lines the window should span. Values <= 0 mean no limit.
-                    -- min_window_height = 0, -- Minimum editor window height to enable context.
+                    max_lines = 3, -- How many lines the window should span. Values <= 0 mean no limit.
+                    min_window_height = 0, -- Minimum editor window height to enable context.
                     line_numbers = true,
                     multiline_threshold = 1, -- Maximum number of lines to show for a single context
                     trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded.
@@ -24,7 +18,6 @@ return {
         build = ":TSUpdate",
         config = function(_, opts)
             require("nvim-treesitter").setup(opts)
-
             -- Make sure that the following are installed:
             require("nvim-treesitter").install {
                 "c",

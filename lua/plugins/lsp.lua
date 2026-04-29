@@ -59,14 +59,18 @@ return {
                 "clangd",
                 "rust_analyzer",
                 "stylua",
+                "vtsls",
+                "html",
+                "cssls",
+                "emmet_language_server"
             },
             -- Automatically call vim.lsp.enable() for installed servers.
             -- Servers managed by wrapper plugins are excluded.
-            automatic_enable = {
-                exclude = {
-                    "ts_ls", -- managed by typescript-tools.nvim
-                },
-            },
+            -- automatic_enable = {
+            --     exclude = {
+            --         "ts_ls", -- managed by typescript-tools.nvim
+            --     },
+            -- },
         },
     },
 
@@ -85,6 +89,7 @@ return {
             })
 
             local attach_group = vim.api.nvim_create_augroup("dotfiles-lsp-attach", { clear = true })
+
             vim.api.nvim_create_autocmd("LspAttach", {
                 group = attach_group,
                 callback = function(args)
@@ -96,8 +101,71 @@ return {
                 end,
             })
 
+            -- The "Native Preview" server (tsgo)
+            -- vim.lsp.config("tsgo", {
+            --     cmd = { "tsgo", "--lsp", "--stdio" },
+            --     filetypes = {
+            --         "javascript",
+            --         "javascriptreact",
+            --         "typescript",
+            --         "typescriptreact",
+            --     },
+            --     root_markers = { "tsconfig.json", "package.json", ".git" },
+            -- })
+
+            -- Enable it
+            -- vim.lsp.enable "tsgo"
+            vim.lsp.config("emmet_language_server", {
+                filetypes = { "css", "html", "javascriptreact", "less", "sass", "scss", "typescriptreact" },
+            })
+
+            -- React / Next.js (Better alternative to ts_ls)
+            vim.lsp.config("vtsls", {
+                filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+                settings = {
+                    typescript = {
+                        suggest = { completeFunctionCalls = true },
+                        updateImportsOnRename = "always",
+                    },
+                },
+            })
+
+            -- HTML
+            vim.lsp.config("html", {
+                filetypes = { "html", "javascriptreact", "typescriptreact" },
+                embeddedLanguages = { css = true, javascript = true },
+            })
+
+            -- CSS / SCSS
+            vim.lsp.config("cssls", {
+                filetypes = { "css", "scss", "less" },
+                settings = {
+                    css = { validate = true },
+                    scss = { validate = true },
+                    less = { validate = true },
+                },
+            })
+
+            -- Tailwind CSS
+            vim.lsp.config("tailwindcss", {
+                root_markers = { "tailwind.config.js", "tailwind.config.ts", "postcss.config.js" },
+            })
+
+            -- ESLint (Crucial for Next.js projects)
+            vim.lsp.config("eslint", {
+                on_attach = function(client, bufnr)
+                    -- Enable auto-fix on save for ESLint
+                    vim.api.nvim_create_autocmd("BufWritePre", {
+                        buffer = bufnr,
+                        command = "EslintFixAll",
+                    })
+                end,
+            })
+
             -- rust
             vim.lsp.config("rust_analyzer", {
+                filetypes = { "rust" },
+                root_markers = { "Cargo.toml", "rust-project.json" },
                 settings = {
                     ["rust-analyzer"] = { checkOnSave = { command = "clippy" } },
                 },
