@@ -51,7 +51,7 @@ vim.opt.timeoutlen = 500
 vim.o.ttimeoutlen = 10
 
 -- Status line.
-vim.o.laststatus = 3
+vim.o.laststatus = 0
 vim.o.cmdheight = 1
 
 vim.o.laststatus = 300
