@@ -1,15 +1,3 @@
-local function Colors(name, bg, config)
-    vim.schedule(function()
-        if config then
-            config()
-        end
-        vim.cmd.colorscheme(name)
-        vim.opt.background = bg or "dark"
-    end)
-end
-
-Colors("seoulbones")
-
 return {
     {
         "vague-theme/vague.nvim",
@@ -62,5 +50,25 @@ return {
         dependencies = {
             { "tjdevries/colorbuddy.nvim" },
         },
+    },
+    {
+        "ficcdaf/ashen.nvim",
+        -- optional but recommended,
+        -- pin to the latest stable release:
+        lazy = false,
+        priority = 1000,
+        -- configuration is optional!
+        opts = {
+            -- your settings here
+            style = {
+                bold = false,
+                italic = false,
+            },
+        },
+        config = function()
+            vim.cmd([[colorscheme ashen]])
+            vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+            vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+        end,
     },
 }
