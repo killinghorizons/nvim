@@ -103,35 +103,6 @@ return {
                     },
                 },
             })
-
-            -- C / C++
-            local clangd_caps = vim.tbl_deep_extend("force", capabilities, {
-                offsetEncoding = { "utf-16" },
-            })
-            vim.lsp.config("clangd", {
-                cmd = {
-                    "clangd",
-                    "--background-index",
-                    "--clang-tidy",
-                    "--header-insertion=iwyu",
-                    "--completion-style=detailed",
-                    "--function-arg-placeholders=false",
-                    "--fallback-style=none",
-                },
-                init_options = {
-                    usePlaceholders = true,
-                    completeUnimported = true,
-                    clangdFileStatus = true,
-                },
-                capabilities = clangd_caps,
-                filetypes = { "c", "cpp" },
-                root_markers = { ".clangd" },
-            })
-
-            -- Zig
-            vim.lsp.config("zls", {
-                settings = { zls = {} },
-            })
         end,
     },
 }
