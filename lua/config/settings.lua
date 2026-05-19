@@ -49,3 +49,6 @@ vim.opt.updatetime = 300
 -- Status line (0 = hidden)
 vim.opt.laststatus = 3
 vim.opt.cmdheight = 1
+
+-- Cursor line
+vim.opt.cursorline = false

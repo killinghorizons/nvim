@@ -4,7 +4,14 @@ return {
         "mason-org/mason.nvim",
         opts = {
             -- Formatters/linters go here, not in mason-lspconfig
-            ensure_installed = { "stylua", "ruff", "rustfmt", "prettierd", "clang-format", "shfmt" },
+            ensure_installed = {
+                "stylua",
+                "ruff",
+                "rustfmt",
+                "prettierd",
+                "clang-format",
+                "shfmt",
+            },
         },
     },
 
@@ -22,11 +29,8 @@ return {
                 "lua_ls",
                 "clangd",
                 "rust_analyzer",
-                "vtsls",
-                "eslint",
-                "html",
-                "cssls",
                 "tailwindcss",
+                "zls",
             },
         },
     },

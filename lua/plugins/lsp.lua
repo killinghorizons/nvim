@@ -64,57 +64,12 @@ return {
                 end,
             })
 
-            -- React / Next.js
-            vim.lsp.config("vtsls", {
-                filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-                settings = {
-                    typescript = {
-                        suggest = { completeFunctionCalls = true },
-                        updateImportsOnRename = "always",
-                    },
-                },
-            })
-
-            -- HTML
-            vim.lsp.config("html", {
-                filetypes = { "html", "javascriptreact", "typescriptreact" },
-                embeddedLanguages = { css = true, javascript = true },
-            })
-
-            -- CSS / SCSS
-            vim.lsp.config("cssls", {
-                filetypes = { "css", "scss", "less" },
-                settings = {
-                    css = { validate = true },
-                    scss = { validate = true },
-                    less = { validate = true },
-                },
-            })
-
-            -- Tailwind CSS
-            vim.lsp.config("tailwindcss", {
-                filetypes = {
-                    "html",
-                    "javascriptreact",
-                    "typescriptreact",
-                    "vue",
-                    "svelte",
-                    "css",
-                    "scss",
-                },
-                root_markers = {
-                    "tailwind.config.js",
-                    "tailwind.config.ts",
-                    "postcss.config.js",
-                },
-            })
-
             -- Rust
             vim.lsp.config("rust_analyzer", {
                 filetypes = { "rust" },
                 root_markers = { "Cargo.toml", "rust-project.json" },
                 settings = {
-                    ["rust-analyzer"] = { checkOnSave = { command = "clippy" } },
+                    ["rust-analyzer"] = { check = { command = "clippy" } },
                 },
             })
 
@@ -167,11 +122,15 @@ return {
                     usePlaceholders = true,
                     completeUnimported = true,
                     clangdFileStatus = true,
-                    fallbackFlags = { "-std=c++20" },
                 },
                 capabilities = clangd_caps,
                 filetypes = { "c", "cpp" },
                 root_markers = { ".clangd" },
+            })
+
+            -- Zig
+            vim.lsp.config("zls", {
+                settings = { zls = {} },
             })
         end,
     },

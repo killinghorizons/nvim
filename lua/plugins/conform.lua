@@ -41,6 +41,8 @@ return {
                 lua = { "stylua" },
                 -- Shell
                 sh = { "shfmt" },
+                -- Go
+                zig = { "injected" },
                 -- Fallback for all other filetypes
                 ["_"] = { "trim_whitespace", "trim_newlines" },
             },
