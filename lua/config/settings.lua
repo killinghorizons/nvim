@@ -13,8 +13,8 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 
 -- Line numbers
-vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.number = false
+vim.opt.relativenumber = false
 
 -- Mouse support
 vim.opt.mouse = "a"

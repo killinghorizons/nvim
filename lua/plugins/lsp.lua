@@ -103,6 +103,100 @@ return {
                     },
                 },
             })
+
+            -- C / C++
+            local clangd_caps = vim.tbl_deep_extend("force", capabilities, {
+                offsetEncoding = { "utf-16" },
+            })
+            vim.lsp.config("clangd", {
+                cmd = {
+                    "clangd",
+                    "--background-index",
+                    "--clang-tidy",
+                    "--header-insertion=iwyu",
+                    "--completion-style=detailed",
+                    "--function-arg-placeholders=false",
+                    "--fallback-style=none",
+                },
+                init_options = {
+                    usePlaceholders = true,
+                    completeUnimported = true,
+                    clangdFileStatus = true,
+                },
+                capabilities = clangd_caps,
+                filetypes = { "c", "cpp" },
+                root_markers = { ".clangd", "compile_commands.json", ".git" },
+            })
         end,
+
+        -- JavaScript / TypeScript
+        vim.lsp.config("tsgo", {
+            cmd = { "tsgo", "--lsp", "--stdio" },
+            filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+            root_dir = function(bufnr, on_dir)
+                local root_markers = { { "package-lock.json", "yarn.lock", "pnpm-lock.yaml" }, { ".git" } }
+                local project_root = vim.fs.root(bufnr, root_markers) or vim.fn.getcwd()
+                on_dir(project_root)
+            end,
+        }),
+
+        -- CSS
+        vim.lsp.config("cssls", {
+            cmd = { "vscode-css-language-server", "--stdio" },
+            filetypes = { "css", "scss", "less" },
+            settings = {
+                css = { validate = true },
+                scss = { validate = true },
+                less = { validate = true },
+            },
+        }),
+
+        -- HTML
+        vim.lsp.config("html", {
+            cmd = { "vscode-html-language-server", "--stdio" },
+            filetypes = { "html" },
+            embeddedLanguages = { css = true, javascript = true },
+        }),
+
+        -- Shells
+        vim.lsp.config("bashls", {
+            cmd = { "bash-language-server", "start" },
+            filetypes = { "bash", "sh", "zsh" },
+        }),
+
+        -- TOML
+        vim.lsp.config("taplo", {
+            cmd = { "taplo", "lsp", "stdio" },
+            filetypes = { "toml" },
+            settings = {
+                taplo = {
+                    configFile = { enabled = true },
+                    schema = {
+                        enabled = true,
+                        catalogs = { "https://www.schemastore.org/api/json/catalog.json" },
+                        cache = {
+                            memoryExpiration = 60,
+                            diskExpiration = 600,
+                        },
+                    },
+                },
+            },
+        }),
+
+        -- Stylint not in mason
+        -- Install with: npm i -g stylelint-lsp
+        vim.lsp.config("stylelint_lsp", {
+            cmd = { "stylelint-lsp", "--stdio" },
+            filetypes = { "css", "less", "scss" },
+            root_markers = { ".stylelintrc", ".stylelintrc.js", ".stylelintrc.json", "stylelint.config.js" },
+            settings = {
+                stylelintplus = {
+                    validateOnSave = true,
+                    validateOnType = false,
+                },
+            },
+        }),
+        vim.lsp.enable("stylelint_lsp"),
+        --
     },
 }
