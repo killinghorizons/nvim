@@ -8,10 +8,17 @@ return {
         -- Keymaps: 'fallback' is the new keyword for 'fallback_to_mappings'
         keymap = {
             preset = "super-tab",
-            ["<C-p>"] = { "select_prev", "fallback" },
-            ["<C-n>"] = { "select_next", "fallback" },
+            -- ["<C-p>"] = { "select_prev", "fallback" },
+            -- ["<C-n>"] = { "select_next", "fallback" },
             -- 'select_and_accept' was renamed to 'accept' in v1.0
             ["<Enter>"] = { "accept", "fallback" },
+            ["<CR>"] = { "accept", "fallback" },
+            ["<C-\\>"] = { "hide", "fallback" },
+            ["<C-n>"] = { "select_next", "show" },
+            ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+            ["<C-p>"] = { "select_prev" },
+            ["<C-b>"] = { "scroll_documentation_up", "fallback" },
+            ["<C-f>"] = { "scroll_documentation_down", "fallback" },
         },
 
         appearance = {

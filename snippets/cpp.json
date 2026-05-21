@@ -1,0 +1,22 @@
+{
+    "main() template": {
+        "prefix": "main",
+        "body": [
+            "int main(${1|void,int argc\\, char *argv[]|}) {",
+            "    $0",
+            "    return 0;",
+            "}"
+        ],
+        "description": "Standard main() snippet"
+    },
+    "cout": {
+        "prefix": "cout",
+        "body": "std::cout << $0 << '\\n';",
+        "description": "std::cout statement"
+    },
+    "cerr": {
+        "prefix": "cerr",
+        "body": "std::cerr << $0 << '\\n';",
+        "description": "std::cerr error output"
+    }
+}
