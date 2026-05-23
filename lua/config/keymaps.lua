@@ -49,9 +49,9 @@ vim.keymap.set("n", "<leader>ya", ":%y+<CR>", { silent = true, desc = "Copy whol
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste without yanking" })
 
 vim.keymap.set("n", "<leader>v", function()
-        if vim.o.background == "light" then
-                vim.o.background = "dark"
-        else
-                vim.o.background = "light"
-        end
+  if vim.o.background == "light" then
+    vim.o.background = "dark"
+  else
+    vim.o.background = "light"
+  end
 end, { noremap = true, silent = true })

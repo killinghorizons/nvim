@@ -52,3 +52,5 @@ vim.opt.cmdheight = 1
 
 -- Cursor line
 vim.opt.cursorline = false
+
+vim.opt.wrap = false
